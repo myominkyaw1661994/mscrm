@@ -180,4 +180,9 @@ if (isset($default_timezone) && function_exists('date_default_timezone_set')) {
 //Set the default layout 
 $default_layout = 'v7';
 
+/*2021-10-18 Thet Phyo Wai Product Info data Transfer Start*/
+// Product Info Transfer Log URL
+$product_info_log_url = 'E:\crm\bin\ProductInfoTransfer.log';
+/*2021-10-18 Thet Phyo Wai Product Info data Transfer End*/
+
 include_once 'config.security.php';

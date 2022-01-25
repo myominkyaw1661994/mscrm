@@ -170,6 +170,10 @@ class Products extends CRMEntity {
 		$adb->pquery("Update vtiger_products set is_subproducts_viewable=0 where productid=?", array($productid));
 		//20201012 Myo Min Kyaw Product Bundle not show in Inventory MSCRM Ver 1.0 End
 
+		//2021-10-18 Thet Phyo Wai Product Transfer to Info Start
+		$adb->pquery("UPDATE `vtiger_products` SET transfer_to_info = 0 WHERE productid = ?", array($this->id));
+		//2021-10-18 Thet Phyo Wai Product Transfer to Info End
+
 	}
 
 	/**	function to save the product tax information in vtiger_producttaxrel table

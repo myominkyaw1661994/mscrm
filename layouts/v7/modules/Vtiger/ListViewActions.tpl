@@ -27,13 +27,24 @@
         <div class = "row">
             <div class=" col-md-3">
             <div class="btn-group listViewActionsContainer" role="group" aria-label="...">
-                {if $editAction}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit button of CSC Sales Order Module Start*}
+                {*2021-08-31 Thet Phyo Wai Remove Edit button of CSC Products Module Start*}
+                {*{if $editAction}*}
+                {*{if $editAction and $MODULE neq 'CSCProducts'} *}
+                {*  Enable EditButton in the Listing *}
+                {if $editAction and $MODULE neq 'CSCProducts' and $MODULE neq 'CSCSalesOrder'}
+                {*2021-08-31 Thet Phyo Wai Remove Edit button of CSC Products Module End*}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit button of CSC Sales Order Module End*}
                     <button type="button" class="btn btn-default" id={$MODULE}_listView_massAction_{$editAction->getLabel()} 
                             {if stripos($editAction->getUrl(), 'javascript:')===0} href="javascript:void(0);" onclick='{$editAction->getUrl()|substr:strlen("javascript:")}'{else} href='{$editAction->getUrl()}' {/if} title="{vtranslate('LBL_EDIT', $MODULE)}" disabled="disabled">
                         <i class="fa fa-pencil"></i>
                     </button>
                 {/if}
-                {if $deleteAction}
+                {*2021-10-12 Pyae Phyo Mon Remove Delete button of CSC Sales Order Module Start*}
+               {*  {if $deleteAction} *}
+               {* Enable Delete Button in the listing page *}
+               {if $deleteAction and $MODULE neq 'CSCSalesOrder'}
+                {*2021-10-12 Pyae Phyo Mon Remove Delete button of CSC Sales Order Module End*}
                     <button type="button" class="btn btn-default" id={$MODULE}_listView_massAction_{$deleteAction->getLabel()} 
                             {if stripos($deleteAction->getUrl(), 'javascript:')===0} href="javascript:void(0);" onclick='{$deleteAction->getUrl()|substr:strlen("javascript:")}'{else} href='{$deleteAction->getUrl()}' {/if} title="{vtranslate('LBL_DELETE', $MODULE)}" disabled="disabled">
                         <i class="fa fa-trash"></i>
@@ -99,7 +110,14 @@
                                 <li class="hide"><a id="{$MODULE}_listView_advancedAction_{Vtiger_Util_Helper::replaceSpaceWithUnderScores($PRINT_TEMPLATE->getLabel())}" {if stripos($PRINT_TEMPLATE->getUrl(), 'javascript:')===0} href="javascript:void(0);" onclick='{$PRINT_TEMPLATE->getUrl()|substr:strlen("javascript:")};'{else} href='{$PRINT_TEMPLATE->getUrl()}' {/if}>{vtranslate($PRINT_TEMPLATE->getLabel(), $MODULE)}</a></li>
                             {/if}
                             {if $FIND_DUPLICATES_EXISTS}
+                            {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module Start*}
+                            {* Disable Merge selected record in Listing *}
+                                {if $MODULE neq 'CSCSalesOrder'}
+                            {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module End*}
                                 <li class="hide"><a id="{$MODULE}_listView_advancedAction_MERGE_RECORD"  href="javascript:void(0);" onclick='Vtiger_List_Js.triggerMergeRecord()'>{vtranslate('LBL_MERGE_SELECTED_RECORDS', $MODULE)}</a></li>
+                                {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module Start*}
+                                {/if}
+                                {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module End*}
                             {/if}
                             {foreach item=LISTVIEW_ADVANCEDACTIONS from=$LISTVIEW_LINKS['LISTVIEW']}
                                 {if $LISTVIEW_ADVANCEDACTIONS->getLabel() == 'LBL_IMPORT'}

@@ -35,9 +35,17 @@
                             {include file=$FIELD_MODEL->getUITypeModel()->getDetailViewTemplateName()|@vtemplate_path:$MODULE_NAME FIELD_MODEL=$FIELD_MODEL USER_MODEL=$USER_MODEL MODULE=$MODULE_NAME RECORD=$RECORD}
                         </span>
                         {if $FIELD_MODEL->isEditable() eq 'true' && $IS_AJAX_ENABLED && $FIELD_MODEL->isAjaxEditable() eq 'true' && $FIELD_MODEL->get('uitype') neq 69}
+                        {*2021-10-12 Pyae Phyo Mon Remove Edit button for CSC SalesOrder Ver 1.0 Start*} 
                           {*2020/11/24 Thet Phyo Wai Add Field Ticket Ver 1.0 Start*}
-                          {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") )}
+                          
+                          {*2021-08-27 Thet Phyo Wai Create CSC Product Module Start*}
+                          {*{if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") )}*}
+                          {* {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") ) and !($MODULE_NAME eq CSCProducts and ($FIELD_NAME neq "productcategory1" and $FIELD_NAME neq "productcategory2"))} *}
+                          {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") ) and !($MODULE_NAME eq CSCProducts and ($FIELD_NAME neq "productcategory1" and $FIELD_NAME neq "productcategory2")) and $MODULE_NAME neq 'CSCSalesOrder'}
+                          {*2021-08-27 Thet Phyo Wai Create CSC Product Module End*}
+
                           {*2020/11/24 Thet Phyo Wai Add Field Ticket Ver 1.0 End*}
+                          {*2021-10-12 Pyae Phyo Mon Remove Edit button for CSC SalesOrder Ver 1.0 End*}
                             <span class="hide edit">
                                 {if $FIELD_MODEL->getFieldDataType() eq 'multipicklist'}
                                 <input type="hidden" class="fieldBasicData" data-name='{$FIELD_MODEL->get('name')}[]' data-type="{$fieldDataType}" data-displayvalue='{Vtiger_Util_Helper::toSafeHTML($FIELD_MODEL->getDisplayValue($FIELD_MODEL->get('fieldvalue')))}' data-value="{$FIELD_MODEL->get('fieldvalue')}" />

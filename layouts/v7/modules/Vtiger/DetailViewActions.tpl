@@ -30,12 +30,16 @@
                 </button>
             {/if}
             {foreach item=DETAIL_VIEW_BASIC_LINK from=$DETAILVIEW_LINKS['DETAILVIEWBASIC']}
-
-                {*2020-10-03 Thet Phyo Wai Permission for Edit MSCRM Ver 1.0 Start*}
-                {if $DETAIL_VIEW_BASIC_LINK->getLabel() eq "LBL_EDIT" and ($IS_EDIT)}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order Start*}
+                {*2021-08-31 Thet Phyo Wai Remove Edit Button in CSC Product Start*}
+                {*{if $DETAIL_VIEW_BASIC_LINK->getLabel() eq "LBL_EDIT" and ($IS_EDIT)}*}
+                {* {if $DETAIL_VIEW_BASIC_LINK->getLabel() eq "LBL_EDIT" and ($IS_EDIT or $MODULE_NAME eq 'CSCProducts')} *}
+                {* Remove Edit Button in Detail Page *}
+                {if $DETAIL_VIEW_BASIC_LINK->getLabel() eq "LBL_EDIT" and ($IS_EDIT or $MODULE_NAME eq 'CSCProducts' or $MODULE_NAME eq 'CSCSalesOrder') }
                     {continue}
                 {/if}
-                {*2020-10-03 Thet Phyo Wai Permission for Edit MSCRM Ver 1.0 End*}
+                {*2021-08-31 Thet Phyo Wai Remove Edit Button in CSC Product End*}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order End*}
 
                 <button class="btn btn-default" id="{$MODULE_NAME}_detailView_basicAction_{Vtiger_Util_Helper::replaceSpaceWithUnderScores($DETAIL_VIEW_BASIC_LINK->getLabel())}"
                         {if $DETAIL_VIEW_BASIC_LINK->isPageLoadLink()}
@@ -50,9 +54,16 @@
                 </button>
             {/foreach}
             {if $DETAILVIEW_LINKS['DETAILVIEW']|@count gt 0}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order Start*}
+                {* Disable More Button for disable Delete button in the Detail Page *}
+                {if $MODULE_NAME neq 'CSCSalesOrder'}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order End*}
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
                    {vtranslate('LBL_MORE', $MODULE_NAME)}&nbsp;&nbsp;<i class="caret"></i>
                 </button>
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order Start*}
+                {/if}
+                {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order End*}
                 <ul class="dropdown-menu dropdown-menu-right">
                     {foreach item=DETAIL_VIEW_LINK from=$DETAILVIEW_LINKS['DETAILVIEW']}
                         {if $DETAIL_VIEW_LINK->getLabel() eq ""} 

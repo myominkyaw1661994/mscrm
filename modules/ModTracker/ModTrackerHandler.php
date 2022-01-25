@@ -41,7 +41,10 @@ class ModTrackerHandler extends VTEventHandler {
 							}
 							$this->id = $adb->getUniqueId('vtiger_modtracker_basic');
 							$changedOn = $newerColumnFields['modifiedtime'];
-							if($moduleName == 'Users') {
+							/*2021-10-18 Thet Phyo Wai Create Product Info Module Start*/
+							/*if($moduleName == 'Users') {*/
+							if($moduleName == 'Users' || $moduleName == 'CSCProducts') {
+							/*2021-10-18 Thet Phyo Wai Create Product Info Module End*/
 								$date_var = date("Y-m-d H:i:s");
 								$changedOn =  $adb->formatDate($date_var,true);
 							}

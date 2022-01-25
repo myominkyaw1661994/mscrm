@@ -70,7 +70,7 @@ $field->column = $field->name;
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'V~O';
+$field->typeofdata = 'V~M';
 $field->label = "LBL_PRODUCT_NAME";
 $blockInstance->addField($field);
 $module->setEntityIdentifier($field);
@@ -84,10 +84,10 @@ $field->column = $field->name;
 $field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->typeofdata = 'V~O';
+$field->masseditable = 0;
+$field->quickcreate = 1;
 $field->summaryfield = 1;
 $field->label = 'LBL_PRODUCT_PART';
-// $array = array("Product", "Part");
-// $field->setPicklistValues($array);
 $blockInstance->addField($field);
 echo "\n";
 
@@ -99,10 +99,10 @@ $field->column = $field->name;
 $field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->typeofdata = 'V~O';
+$field->masseditable = 0;
+$field->quickcreate = 1;
 $field->summaryfield = 0;
 $field->label = 'LBL_PRODUCT_AVAILABLE_STATUS';
-// $array = array("Living", "Last By", "Stock");
-// $field->setPicklistValues($array);
 $blockInstance->addField($field);
 echo "\n";
 
@@ -121,9 +121,9 @@ $field->label = 'LBL_PRODUCT_GROUP';
 $blockInstance->addField($field);
 echo "\n";
 
-/*Create Vendor Name*/
+/*Create Vendor Name need to compline*/
 $field = new Vtiger_Field();
-$field->name = 'vendorid';
+$field->name = 'vendorname';
 $field->table = $module->basetable;
 $field->column = $field->name;
 $field->columntype = 'int(19)';
@@ -132,7 +132,6 @@ $field->summaryfield = 1;
 $field->typeofdata = 'I~O';
 $field->label = "LBL_VENDOR_NAME";
 $blockInstance->addField($field);
-$field->setRelatedModules(array('Vendors'));
 echo "\n";
 
 //create product category 1 field
@@ -143,10 +142,10 @@ $field->column = $field->name;
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->typeofdata = 'V~O';
+$field->masseditable = 0;
+$field->quickcreate = 1;
 $field->summaryfield = 0;
-// $field->label = 'LBL_PRODUCT_CATEGORY_ONE';
-// $array = array("PCG1 A", "PCG1 B");
-$field->setPicklistValues($array);
+$field->label = 'LBL_PRODUCT_CATEGORY_ONE';
 $blockInstance->addField($field);
 echo "\n";
 
@@ -162,8 +161,6 @@ $field->masseditable = 0;
 $field->quickcreate = 1;
 $field->summaryfield = 0;
 $field->label = 'LBL_PRODUCT_CATEGORY_TWO';
-// $array = array("PCG2 A", "PCG2 B");
-// $field->setPicklistValues($array);
 $blockInstance->addField($field);
 echo "\n";
 
@@ -188,7 +185,7 @@ $field->column = $field->name;
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'V~O';
+$field->typeofdata = 'I~O';
 $field->label = "LBL_MANUFACTURER";
 $blockInstance->addField($field);
 echo "\n";
@@ -279,7 +276,7 @@ $field->name = 'usageunit';
 $field->table = $module->basetable;
 $field->column = $field->name;
 $field->columntype = 'varchar(200)';
-$field->uitype = 15;
+$field->uitype = 3;
 $field->summaryfield = 0;
 $field->typeofdata = 'V~M';
 $field->label = "LBL_USAGEUNIT";
@@ -307,7 +304,7 @@ $field->column = 'smownerid';
 $field->columntype = 'int(11)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'V~O';
+$field->typeofdata = 'V~M';
 $field->label = "LBL_ASSIGNED_USER_ID";
 $blockInstance->addField($field);
 echo "\n";
@@ -324,42 +321,12 @@ $field->name = 'description';
 $field->table = 'vtiger_crmentity';
 $field->column = 'description';
 $field->columntype = 'mediumtext';
-$field->uitype = 3;
+$field->uitype = 19;
 $field->summaryfield = 0;
 $field->typeofdata = 'N~O';
 $field->label = "LBL_DESCRIPTION";
 $blockInstance->addField($field);
 echo "\n";
-
-/* created time */
-$field = new Vtiger_Field();
-$field->name = 'createdtime';
-$field->table = 'vtiger_crmentity';
-$field->column = $field->name;
-$field->columntype = 'createdtime';
-$field->uitype = 3;
-$field->typeofdata = 'DT~O';
-$field->masseditable = 0;
-$field->quickcreate = 3;
-$field->summaryfield = 0;
-$field->displaytype = 2;
-$field->label = "LBL_CREATED_TIME";
-$blockInstance->addField($field);
-
-/* modified time */
-$field = new Vtiger_Field();
-$field->name = 'modifiedtime';
-$field->table = 'vtiger_crmentity';
-$field->column = $field->name;
-$field->columntype = 'modifiedtime';
-$field->uitype = 3;
-$field->typeofdata = 'DT~O';
-$field->masseditable = 0;
-$field->quickcreate = 3;
-$field->summaryfield = 0;
-$field->displaytype = 2;
-$field->label = "LBL_MODIFIED_TIME";
-$blockInstance->addField($field);
 /*------------------------------------------------------------------------------------------*/
 
 //get all filter of module

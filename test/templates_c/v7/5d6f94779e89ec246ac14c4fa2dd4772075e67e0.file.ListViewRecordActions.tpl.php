@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-21 12:25:36
+<?php /* Smarty version Smarty-3.1.7, created on 2022-01-24 15:35:17
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\ListViewRecordActions.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:57939170761ea4ad82520c7-22250422%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5d6f94779e89ec246ac14c4fa2dd4772075e67e0' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\ListViewRecordActions.tpl',
-      1 => 1606883678,
+      1 => 1635737405,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_61ea4ad8333f6',
   'variables' => 
   array (
     'SEARCH_MODE_RESULTS' => 0,
@@ -28,8 +30,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'IS_EDIT' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_61ea4ad8333f6',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_61ea4ad8333f6')) {function content_61ea4ad8333f6($_smarty_tpl) {?>
 <!--LIST VIEW RECORD ACTIONS--><div class="table-actions"><?php if (!$_smarty_tpl->tpl_vars['SEARCH_MODE_RESULTS']->value){?><span class="input" ><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
@@ -41,11 +41,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " href="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getFullDetailViewUrl();?>
 &app=<?php echo $_smarty_tpl->tpl_vars['SELECTED_MENU_CATEGORY']->value;?>
 "><?php echo vtranslate('LBL_DETAILS',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-</a></li><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value){?><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['edit']&&!($_smarty_tpl->tpl_vars['IS_EDIT']->value&&(($_smarty_tpl->tpl_vars['MODULE']->value=='PurchaseOrder'&&$_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->get('approve')=='Yes')||($_smarty_tpl->tpl_vars['MODULE']->value=='Invoice'&&$_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->get('invoicestatus')=='Paid')))){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
+</a></li><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value){?><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['edit']&&!($_smarty_tpl->tpl_vars['IS_EDIT']->value&&(($_smarty_tpl->tpl_vars['MODULE']->value=='PurchaseOrder'&&$_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->get('approve')=='Yes')||($_smarty_tpl->tpl_vars['MODULE']->value=='Invoice'&&$_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->get('invoicestatus')=='Paid')))&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCProducts'&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder'){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
 " href="javascript:void(0);" data-url="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getEditViewUrl();?>
 &app=<?php echo $_smarty_tpl->tpl_vars['SELECTED_MENU_CATEGORY']->value;?>
 " name="editlink"><?php echo vtranslate('LBL_EDIT',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-</a></li><?php }?><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['delete']){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
+</a></li><?php }?><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['delete']&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder'){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
 " href="javascript:void(0);" class="deleteRecordButton"><?php echo vtranslate('LBL_DELETE',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-</a></li><?php }?><?php }?></ul></span><div class="btn-group inline-save hide"><button class="button btn-success btn-small save" type="button" name="save"><i class="fa fa-check"></i></button><button class="button btn-danger btn-small cancel" type="button" name="Cancel"><i class="fa fa-close"></i></button></div></div>
+</a></li><?php }?><?php }?></ul></span><div class="btn-group inline-save hide"><?php if ($_smarty_tpl->tpl_vars['MODULE']->value!='CSCProducts'&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder'){?><button class="button btn-success btn-small save" type="button" name="save"><i class="fa fa-check"></i></button><?php }?><button class="button btn-danger btn-small cancel" type="button" name="Cancel"><i class="fa fa-close"></i></button></div></div>
 <?php }} ?>

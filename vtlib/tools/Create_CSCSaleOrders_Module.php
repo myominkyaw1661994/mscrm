@@ -193,16 +193,15 @@ echo "\n";
 
 //Create Organization Name field
 $field = new Vtiger_Field();
-$field->name = 'account_id';
+$field->name = 'account_name';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'int(19)';
+$field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 1;
 $field->typeofdata = 'I~O';
 $field->label = "LBL_ACCOUNT_NAME";
 $blockInstance->addField($field);
-$field->setRelatedModules(array('Accounts'));
 echo "\n";
 
 //create order receipt persion field
@@ -284,8 +283,6 @@ $blockInstance->label = 'LBL_RECURRING_INVOICE_INFORMATION';
 $module->addBlock($blockInstance);
 echo "\n";
 
-
-
 //create enable recurring field
 $field = new Vtiger_Field();
 $field->name = 'enable_recurring';
@@ -320,7 +317,7 @@ $field = new Vtiger_Field();
 $field->name = 'start_period';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'date';
+$field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 1;
 $field->typeofdata = 'D~O';
@@ -333,7 +330,7 @@ $field = new Vtiger_Field();
 $field->name = 'end_period';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'date';
+$field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 1;
 $field->typeofdata = 'D~O~OTH~G~start_period~Start Period';
@@ -634,8 +631,6 @@ $blockInstance->addField($field);
 echo "\n";
 
 
-
-
 //Excluding Tax Total
 $field = new Vtiger_Field();
 $field->name = 'excluding_tax_total';
@@ -880,6 +875,7 @@ $blockInstance->addField($field);
 echo "\n";
 
 
+echo "here1";
 //get all filter of module
 $filter = new Vtiger_Filter();
 //delete module's all filter
@@ -894,10 +890,12 @@ $module->addFilter($filter);
 $filter_columns = array(
     'cscsaleorder_no',
     'subject',
-    'account_id',
+    'account_name',
     'saleorder_type',
     'sostatus'
 );
+
+echo "here1";
 
 $field_list = array();
 foreach ($filter_columns as $columnname) {
@@ -909,7 +907,7 @@ foreach ($field_list as $index => $column) {
 }
 echo "\n";
 /*------------------------------------------------------------------------------------------*/
-
+echo "here2";
 //Set Module Sharing Access
 $module->setDefaultSharing('Public_ReadWriteDelete');
 

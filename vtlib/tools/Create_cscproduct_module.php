@@ -126,10 +126,10 @@ $field = new Vtiger_Field();
 $field->name = 'vendorname';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'int(19)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'I~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_VENDOR_NAME";
 $blockInstance->addField($field);
 echo "\n";
@@ -195,7 +195,7 @@ $field = new Vtiger_Field();
 $field->name = 'sales_start_date';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'date';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
 $field->typeofdata = 'D~O';
@@ -211,7 +211,7 @@ $field->column = $field->name;
 $field->columntype = 'date';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'D~O~OTH~GE~sales_start_date~Sales Start Date';
+$field->typeofdata = 'varchar(200)';
 $field->label = "LBL_SALE_END_DATE";
 $blockInstance->addField($field);
 echo "\n";
@@ -228,6 +228,37 @@ $field->typeofdata = 'V~O';
 $field->label = "LBL_PARTNER";
 $blockInstance->addField($field);
 echo "\n";
+
+
+/* created time */
+$field = new Vtiger_Field();
+$field->name = 'createdtime';
+$field->table = 'vtiger_crmentity';
+$field->column = $field->name;
+$field->columntype = 'createdtime';
+$field->uitype = 70;
+$field->typeofdata = 'DT~O';
+$field->masseditable = 0;
+$field->quickcreate = 3;
+$field->summaryfield = 0;
+$field->displaytype = 2;
+$field->label = "LBL_CREATED_TIME";
+$blockInstance->addField($field);
+
+/* modified time */
+$field = new Vtiger_Field();
+$field->name = 'modifiedtime';
+$field->table = 'vtiger_crmentity';
+$field->column = $field->name;
+$field->columntype = 'modifiedtime';
+$field->uitype = 70;
+$field->typeofdata = 'DT~O';
+$field->masseditable = 0;
+$field->quickcreate = 3;
+$field->summaryfield = 0;
+$field->displaytype = 2;
+$field->label = "LBL_MODIFIED_TIME";
+$blockInstance->addField($field);
 /*------------------------------------------------------------------------------------------*/
 
 //create unit information block
@@ -327,6 +358,99 @@ $field->typeofdata = 'N~O';
 $field->label = "LBL_DESCRIPTION";
 $blockInstance->addField($field);
 echo "\n";
+
+
+// Unit Information
+
+//create description details block
+$blockInstance = new Vtiger_Block();
+$blockInstance->label = 'LBL_UNIT_INFORMATION';
+$module->addBlock($blockInstance);
+echo "\n";
+
+
+//unit conversion usage unit
+$field = new Vtiger_Field();
+$field->name = 'usageunit';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'usageunit';
+$field->columntype = 'varchar(200)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_UNITCON_USAGEUNIT";
+$blockInstance->addField($field);
+echo "\n";
+
+
+//unit conversion 
+$field = new Vtiger_Field();
+$field->name = 'unitconversion';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'unitconversion';
+$field->columntype = 'varchar(200)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_UNITCONVERSION";
+$blockInstance->addField($field);
+echo "\n";
+
+//selling price
+$field = new Vtiger_Field();
+$field->name = 'selling_price';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'selling_price';
+$field->columntype = 'decimal(18,3)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_SELLING_PRICE";
+$blockInstance->addField($field);
+echo "\n";
+
+
+//currency id
+$field = new Vtiger_Field();
+$field->name = 'currencyid';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'currencyid';
+$field->columntype = 'int(11)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_CURRENCY_ID";
+$blockInstance->addField($field);
+echo "\n";
+
+
+//currency id
+$field = new Vtiger_Field();
+$field->name = 'sequence';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'sequence';
+$field->columntype = 'int(11)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_SEQUENCY";
+$blockInstance->addField($field);
+echo "\n";
+
+
+//Unit QTY
+$field = new Vtiger_Field();
+$field->name = 'unit_qty';
+$field->table = 'vtiger_cscproductunitconversion';
+$field->column = 'unit_qty';
+$field->columntype = 'int(11)';
+$field->uitype = 3;
+$field->summaryfield = 0;
+$field->typeofdata = 'N~O';
+$field->label = "LBL_SEQUENCY";
+$blockInstance->addField($field);
+echo "\n";
+
 /*------------------------------------------------------------------------------------------*/
 
 //get all filter of module
@@ -400,7 +524,7 @@ echo "\n";
 /*------------------------------------------------------------------------------------------*/
 //create new table for unit conversation of product
 $adb->query('DROP TABLE IF EXISTS ' . $unit_table);
-$adb->pquery("CREATE TABLE " . $unit_table . " (cscproductsid int(11), usageunit varchar(200), unitconversion varchar(100), selling_price decimal(18,3), currencyid int(11), sequence int(11))", array());
+$adb->pquery("CREATE TABLE " . $unit_table . " (cscproductsid int(11), usageunit varchar(200), unitconversion varchar(100), selling_price decimal(18,3), currencyid int(11), sequence int(11), unit_qty int(11))", array());
 echo "Create Unit Conversation Table.....<BR>\n";
 
 $log->debug("[END] Create CSC Products Module");

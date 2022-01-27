@@ -136,6 +136,10 @@ class SalesOrder extends CRMEntity {
 		$update_query = "update vtiger_salesorder set currency_id=?, conversion_rate=? where salesorderid=?";
 		$update_params = array($this->column_fields['currency_id'], $this->column_fields['conversion_rate'], $this->id);
 		$this->db->pquery($update_query, $update_params);
+
+		//2021-10-22 Thet Phyo Wai Sales Order Transfer to History Start
+		$this->db->pquery("UPDATE `vtiger_salesorder` SET `transfer_to_history`= 0 WHERE `salesorderid` = ?", array($this->id));
+		//2021-10-22 Thet Phyo Wai Sales Order Transfer to History End
 	}
 
 	/** Function to get activities associated with the Sales Order

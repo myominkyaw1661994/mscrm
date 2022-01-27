@@ -12,6 +12,7 @@
 		<table class="table detailview-table">
 			<thead>
 				<tr>
+					<th class="fieldLabel">QTY</td>
 					<th class="fieldLabel">{vtranslate(LBL_UNIT_TYPE,{$MODULE_NAME})}</td>
 					<th class="fieldLabel">{vtranslate(LBL_UNIT_CONVERSATION,{$MODULE_NAME})}</td>
 					<th class="fieldLabel">{vtranslate(LBL_SELLING_PRICE,{$MODULE_NAME})}</td>
@@ -22,6 +23,7 @@
 			{assign var=PREVIOUS_UNIT value=""}
 				{foreach key=INDEX item=UNIT_DETAIL from=$UNIT_CONVERSATION}
 				<tr>
+					<td>testing</td>
 					<td class="fieldValue">{$UNIT_DETAIL["usageunit"]}</td>
 
 					<td class="fieldValue">

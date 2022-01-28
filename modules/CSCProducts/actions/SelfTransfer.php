@@ -6,10 +6,12 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 	//Initial process function
 	public function process(Vtiger_Request $request)
 	{
-		global $current_user, $adb, $event_setting_log_url, $default_setting_month;
+		global $current_user, $adb;
 
 		$this->logger('[SELF_START] Self Data Transfer Start');
 		try {
+
+
 			//Get All Create and Update Products' Data from Master Product Module
 			$products = $this->getCreatedUpdatedProducts();
 
@@ -22,7 +24,7 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 		$this->logger('[SELF_END] Self Data Transfer End');
 	}
 
-	//Get Setting Event of Organization data
+	//Get All Create and Update Products' Data from Master Product Module
 	function getCreatedUpdatedProducts()
 	{
 		global $adb;
@@ -58,9 +60,21 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 					$productUnitPrice[$n]['sequence'] = 0;
 					$productUnitPrice[$n]['unitconversion'] = 1;
 					$productUnitPrice[$n]['usageunit'] = $result_set['usageunit'];
+					$productUnitPrice[$n]['qtyinstock'] = $result_set['qtyinstock'];
 					$n++;
 				}
 				$products[$i]['product_units'] = $productUnitPrice;
+
+				//Get Product Parts data from Master Product
+				$sql = "SELECT pd.product_no FROM `vtiger_seproductsrel` AS spr 
+						INNER JOIN vtiger_products AS pd ON pd.productid=spr.crmid
+						WHERE spr.productid = ? and spr.setype='Products'";
+				$partsResult = $adb->pquery($sql, array($productId));
+				$productParts = array();
+				while ($rowData = $adb->fetch_array($partsResult)) {
+					$productParts[] = $rowData['product_no'];
+				}
+				$products[$i]['productpartsrel'] = $productParts;
 
 				$i++;
 			}
@@ -72,12 +86,14 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 	private function saveProducts($settingProducts)
 	{
 		global $adb;
-
+		$productinfo_parts = array();
 		//loop for each Product
 		foreach ($settingProducts as $key => $product) {
+
+			$productinfo_parts[$key]['partrelno'] = $product['productpartsrel'];
+
 			$productId = $product['productid'];
 			$vendor_id = $product['vendor_id'];
-
 			//Get vendor name
 			$vendor_name = $this->getVendorNameById($product['vendor_id']);
 
@@ -118,6 +134,8 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 			$saveAction = new CSCProducts_Save_Action();
 			try {
 				$obj = $saveAction->saveRecord(new Vtiger_Request($save_product, $save_product));
+
+				$productinfo_parts[$key]['productInfoId'] = $obj->get('id');
 			} catch (Exception $e) {
 				$this->logger('[ERROR] Cannot Save Product Info ("Product Name is ' . $product['productname'] . '")');
 				$this->logger($e->getTraceAsString());
@@ -128,6 +146,50 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 			$sql = "UPDATE `vtiger_products` SET transfer_to_info = 1 WHERE productid = ?";
 			$adb->pquery($sql, array($productId));
 		}
+
+		//Get CSCProducts Module model
+		$CSCProductModuleModel = Vtiger_Module_Model::getInstance('CSCProducts');
+		//Get CSCProducts product and part relation Module model
+		$relationModel = Vtiger_Relation_Model::getInstance($CSCProductModuleModel, $CSCProductModuleModel);
+
+		foreach ($productinfo_parts as $key => $value) {
+			$productInfoId = $value['productInfoId'];
+			$productrelno = $value['partrelno'];
+
+			//get all product and part of product info
+			$sql = "SELECT relcrmid FROM `vtiger_crmentityrel`
+					WHERE crmid = ? and module='CSCProducts' and relmodule='CSCProducts'";
+			$partsResult = $adb->pquery($sql, array($productInfoId));
+			while ($rowData = $adb->fetch_array($partsResult)) {
+				//delete all product part from info
+				$relationModel->deleteRelation($productInfoId, $rowData['relcrmid']);
+			}
+
+			foreach ($productrelno as $k => $productNo) {
+
+				//get Related part id from Product No
+				$sql = "SELECT cscproductsid FROM `vtiger_cscproducts` AS pd 
+					INNER JOIN vtiger_crmentity AS crm ON crm.crmid = pd.cscproductsid 
+					WHERE cscproduct_no = ? AND crm.deleted = 0";
+				$infoExist = $adb->pquery($sql, array($productNo));
+				if ($adb->num_rows($infoExist) > 0) {
+					//add product and part relation in Product info
+					$relationModel->addRelation($productInfoId, $adb->query_result($infoExist, 0, 'cscproductsid'));
+				} else {
+					$this->logger('[ERROR] Product Number (' . $productNo . ') Cannot find in Product Info to related.');
+				}
+			}
+		}
+	}
+
+	function logger($message)
+	{
+		global $product_info_log_url, $default_timezone;
+		$date = new DateTime();
+		$date->setTimezone(new DateTimeZone($default_timezone));
+
+		$logmessage = '[' . $date->format('Y-m-d H:i:s') . ']' . mb_convert_encoding($message, "UTF-8", "auto") . "\r\n";
+		file_put_contents($product_info_log_url, $logmessage, FILE_APPEND | LOCK_EX);
 	}
 
 	//Get vendor name by Id
@@ -141,15 +203,5 @@ class CSCProducts_SelfTransfer_Action extends Vtiger_Action_Controller
 		}
 
 		return $vendor_name;
-	}
-
-	function logger($message)
-	{
-		global $product_info_log_url, $default_timezone;
-		$date = new DateTime();
-		$date->setTimezone(new DateTimeZone($default_timezone));
-
-		$logmessage = '[' . $date->format('Y-m-d H:i:s') . ']' . mb_convert_encoding($message, "UTF-8", "auto") . "\r\n";
-		file_put_contents($product_info_log_url, $logmessage, FILE_APPEND | LOCK_EX);
 	}
 }

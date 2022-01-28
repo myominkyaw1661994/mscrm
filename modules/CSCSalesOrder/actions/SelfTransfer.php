@@ -47,6 +47,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 			while ($result_set = $adb->fetch_array($result)) {
 				$saleorderId = $result_set['salesorderid'];
 				$saleorderCurrencyId = $result_set['currency_id'];
+				$saleorderCurrencyname = $this->getCurrencyNameById($result_set['currency_id']);
 				$taxType = $result_set['taxtype'];
 
 				$saleorders[$i] = $result_set;
@@ -67,7 +68,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 					$productrel[$n]['unit_type'] = $rowData['usageunit'];
 					$productrel[$n]['selling_price'] = $rowData['listprice'];
 					$productrel[$n]['quantity'] = $rowData['quantity'];
-					$productrel[$n]['currency_type'] = $saleorderCurrencyId;
+					$productrel[$n]['currency_type'] = $saleorderCurrencyname;
 					//if tax type is group in SO, tax of each product = 0
 					if ($taxType == "group") {
 						$productrel[$n]['item_tax'] = 0;
@@ -100,6 +101,11 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 			$potential_data = $SalesOrder['potentialid'];
 			$contact_data = $SalesOrder['contactid'];
 			$account_data = $SalesOrder['accountid'];
+			$currency_data = $SalesOrder['currency_id'];
+
+			if (isset($currency_data)) {
+				$currency_data = $this->getCurrencyNameById($currency_data);
+			}
 
 			//check the potential Id 
 			if (isset($potentialId)) {
@@ -154,8 +160,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 				'ship_postal_code'			=> $SalesOrder['ship_code'],
 				'ship_country'				=> $SalesOrder['ship_country'],
 				'description'				=> $SalesOrder['description'],
-
-				'currency_id'				=> $SalesOrder['currency_id'],
+				'currency_name'				=> $currency_data,
 				'taxtype'					=> $SalesOrder['taxtype'],
 				'item_total'				=> $SalesOrder['subtotal'],
 				'discount_percent'			=> $SalesOrder['discount_percent'],
@@ -217,6 +222,14 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 		}
 
 		return $account_name;
+	}
+
+	function getCurrencyNameById($id)
+	{
+		global $adb;
+		$result = $adb->pquery("SELECT currency_name FROM vtiger_currency_info WHERE id = ?", array($id));
+		$currency_name = $adb->query_result($result, 0, 'currency_name');
+		return $currency_name;
 	}
 
 	//Get Contact Name by Id

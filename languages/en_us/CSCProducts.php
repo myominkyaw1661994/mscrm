@@ -8,7 +8,7 @@
  * All Rights Reserved.
  ************************************************************************************/
 
-$languageStrings = Array(
+$languageStrings = array(
 	'ModuleName' => 'Product Info',
 	'SINGLE_ModuleName' => 'Product Info',
 	'CSCProducts' => 'Product Info',
@@ -23,6 +23,9 @@ $languageStrings = Array(
 	'LBL_UNIT_INFORMATION' => 'Unit Information',
 	'LBL_STOCK_INFORMATION' => 'Stock Information',
 	'LBL_DESCRIPTION_DETAILS' => 'Description Details',
+	'LBL_UNIT_QTY' => 'QTY',
+	'LBL_CREATED_TIME' => 'Created Time',
+	'LBL_MODIFIED_TIME' => 'Modified Time',
 
 	//Summary Label
 	'LBL_PRODUCTS_PARTS' => 'Product Parts',
@@ -32,7 +35,7 @@ $languageStrings = Array(
 	'LBL_CSC_PRODUCT_NO' => 'Product No',
 	'LBL_CSC_PRODUCT_NUMBER' => 'Product Number',
 	'LBL_PRODUCT_NAME' => 'Product Name',
-	'LBL_PRODUCT_PART'=>'Product/Part',
+	'LBL_PRODUCT_PART' => 'Product/Part',
 	'LBL_PRODUCT_AVAILABLE_STATUS' => 'Prodcut Available Status',
 	'LBL_PRODUCT_GROUP' => 'Prodcut Group',
 	'LBL_VENDOR_NAME' => 'Vendor Name',
@@ -54,13 +57,11 @@ $languageStrings = Array(
 	'LBL_MIN_OR_QTY' => 'Minimum Order Qty',
 	'LBL_ASSIGNED_USER_ID' => 'Handler',
 
-	'--None--'=>'--None--',
+	'--None--' => '--None--',
 
-	'Hardware'=>'Hardware',
-	'Software'=>'Software',
-	'CRM Applications'=>'CRM Applications',
+	'Hardware' => 'Hardware',
+	'Software' => 'Software',
+	'CRM Applications' => 'CRM Applications',
 
 	'ModuleFieldLabel' => '',
 );
-
-?>

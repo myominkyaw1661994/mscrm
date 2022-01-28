@@ -82,7 +82,6 @@ $languageStrings = Array(
 	'LBL_TAXTYPE' => 'Tax Type', 
 	'LBL_DISCOUNT_PERCENT' => 'Discount Percent', 
 	'LBL_SOURCEFROM' => 'Source From',
-	'LBL_COMMENT' => 'Comment'
+	'LBL_COMMENT' => 'Comment',
+	'LBL_VENDOR_NAME' => 'Vendor Name'
 );
-
-?>

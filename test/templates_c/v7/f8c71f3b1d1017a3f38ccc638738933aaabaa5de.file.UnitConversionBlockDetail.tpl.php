@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-25 14:34:31
+<?php /* Smarty version Smarty-3.1.7, created on 2022-01-27 09:32:36
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\CSCProducts\UnitConversionBlockDetail.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:19944940161ee1b1f982947-50971813%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f8c71f3b1d1017a3f38ccc638738933aaabaa5de' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\CSCProducts\\UnitConversionBlockDetail.tpl',
-      1 => 1643097868,
+      1 => 1643252520,
       2 => 'file',
     ),
   ),
@@ -36,21 +36,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " data-mode="show" data-id=165>&nbsp;<?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['BLOCK_LABEL_KEY']->value;?>
 <?php $_tmp1=ob_get_clean();?><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
 <?php $_tmp2=ob_get_clean();?><?php echo vtranslate($_tmp1,$_tmp2);?>
-</h4><hr><div class="blockData"><table class="table detailview-table"><thead><tr><th class="fieldLabel">QTY</td><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
-<?php $_tmp3=ob_get_clean();?><?php echo vtranslate('LBL_UNIT_TYPE',$_tmp3);?>
+</h4><hr><div class="blockData"><table class="table detailview-table"><thead><tr><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
+<?php $_tmp3=ob_get_clean();?><?php echo vtranslate('LBL_UNIT_QTY',$_tmp3);?>
 </td><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
-<?php $_tmp4=ob_get_clean();?><?php echo vtranslate('LBL_UNIT_CONVERSATION',$_tmp4);?>
+<?php $_tmp4=ob_get_clean();?><?php echo vtranslate('LBL_UNIT_TYPE',$_tmp4);?>
 </td><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
-<?php $_tmp5=ob_get_clean();?><?php echo vtranslate('LBL_SELLING_PRICE',$_tmp5);?>
+<?php $_tmp5=ob_get_clean();?><?php echo vtranslate('LBL_UNIT_CONVERSATION',$_tmp5);?>
 </td><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
-<?php $_tmp6=ob_get_clean();?><?php echo vtranslate('LBL_CURRENCY',$_tmp6);?>
+<?php $_tmp6=ob_get_clean();?><?php echo vtranslate('LBL_SELLING_PRICE',$_tmp6);?>
+</td><th class="fieldLabel"><?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['MODULE_NAME']->value;?>
+<?php $_tmp7=ob_get_clean();?><?php echo vtranslate('LBL_CURRENCY',$_tmp7);?>
 </td></tr></thead><tbody><?php $_smarty_tpl->tpl_vars['PREVIOUS_UNIT'] = new Smarty_variable('', null, 0);?><?php  $_smarty_tpl->tpl_vars['UNIT_DETAIL'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['UNIT_DETAIL']->_loop = false;
  $_smarty_tpl->tpl_vars['INDEX'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['UNIT_CONVERSATION']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['UNIT_DETAIL']->key => $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value){
 $_smarty_tpl->tpl_vars['UNIT_DETAIL']->_loop = true;
  $_smarty_tpl->tpl_vars['INDEX']->value = $_smarty_tpl->tpl_vars['UNIT_DETAIL']->key;
-?><tr><td>testing</td><td class="fieldValue"><?php echo $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["usageunit"];?>
+?><tr><td class="fieldValue"><?php echo $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["unit_qty"];?>
+</td><td class="fieldValue"><?php echo $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["usageunit"];?>
 </td><td class="fieldValue"><?php if (!($_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["sequence"]==0||$_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["sequence"]==1)&&$_smarty_tpl->tpl_vars['PREVIOUS_UNIT']->value!=''){?><?php echo $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["unitconversion"];?>
  per <?php echo $_smarty_tpl->tpl_vars['PREVIOUS_UNIT']->value;?>
 <?php }else{ ?><?php echo $_smarty_tpl->tpl_vars['UNIT_DETAIL']->value["unitconversion"];?>

@@ -185,7 +185,7 @@ $field->column = $field->name;
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'I~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_MANUFACTURER";
 $blockInstance->addField($field);
 echo "\n";
@@ -208,10 +208,10 @@ $field = new Vtiger_Field();
 $field->name = 'sales_end_date';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'date';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'varchar(200)';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_SALE_END_DATE";
 $blockInstance->addField($field);
 echo "\n";
@@ -280,7 +280,7 @@ $field = new Vtiger_Field();
 $field->name = 'tax4';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'decimal(18,3)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
 $field->typeofdata = 'V~O';
@@ -293,10 +293,10 @@ $field = new Vtiger_Field();
 $field->name = 'commissionrate';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'decimal(7,3)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_COMMISSION_RATE";
 $blockInstance->addField($field);
 echo "\n";
@@ -309,7 +309,7 @@ $field->column = $field->name;
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'V~M';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_USAGEUNIT";
 $blockInstance->addField($field);
 echo "\n";
@@ -319,7 +319,7 @@ $field = new Vtiger_Field();
 $field->name = 'min_or_qty';
 $field->table = $module->basetable;
 $field->column = $field->name;
-$field->columntype = 'int(10)';
+$field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 0;
 $field->typeofdata = 'NN~M~10,0';
@@ -333,7 +333,7 @@ $field->name = 'assigned_user_id';
 $field->table = 'vtiger_crmentity';
 $field->column = 'smownerid';
 $field->columntype = 'int(11)';
-$field->uitype = 3;
+$field->uitype = 53;
 $field->summaryfield = 0;
 $field->typeofdata = 'V~M';
 $field->label = "LBL_ASSIGNED_USER_ID";
@@ -360,15 +360,6 @@ $blockInstance->addField($field);
 echo "\n";
 
 
-// Unit Information
-
-//create description details block
-$blockInstance = new Vtiger_Block();
-$blockInstance->label = 'LBL_UNIT_INFORMATION';
-$module->addBlock($blockInstance);
-echo "\n";
-
-
 //unit conversion usage unit
 $field = new Vtiger_Field();
 $field->name = 'usageunit';
@@ -377,9 +368,9 @@ $field->column = 'usageunit';
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_UNITCON_USAGEUNIT";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 
@@ -391,9 +382,9 @@ $field->column = 'unitconversion';
 $field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_UNITCONVERSION";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 //selling price
@@ -401,12 +392,12 @@ $field = new Vtiger_Field();
 $field->name = 'selling_price';
 $field->table = 'vtiger_cscproductunitconversion';
 $field->column = 'selling_price';
-$field->columntype = 'decimal(18,3)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_SELLING_PRICE";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 
@@ -415,12 +406,12 @@ $field = new Vtiger_Field();
 $field->name = 'currencyid';
 $field->table = 'vtiger_cscproductunitconversion';
 $field->column = 'currencyid';
-$field->columntype = 'int(11)';
+$field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_CURRENCY_ID";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 
@@ -429,12 +420,12 @@ $field = new Vtiger_Field();
 $field->name = 'sequence';
 $field->table = 'vtiger_cscproductunitconversion';
 $field->column = 'sequence';
-$field->columntype = 'int(11)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_SEQUENCY";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 
@@ -443,12 +434,12 @@ $field = new Vtiger_Field();
 $field->name = 'unit_qty';
 $field->table = 'vtiger_cscproductunitconversion';
 $field->column = 'unit_qty';
-$field->columntype = 'int(11)';
+$field->columntype = 'varchar(200)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'N~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_SEQUENCY";
-$blockInstance->addField($field);
+// $blockInstance->addField($field);
 echo "\n";
 
 /*------------------------------------------------------------------------------------------*/

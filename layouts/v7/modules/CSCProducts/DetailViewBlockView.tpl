@@ -1,5 +1,4 @@
 {*2021-08-18 Thet Phyo Wai Create CSCProduts Module*}
-
 {strip}
 	{if !empty($PICKIST_DEPENDENCY_DATASOURCE)}
 		<input type="hidden" name="picklistDependency" value='{Vtiger_Util_Helper::toSafeHTML($PICKIST_DEPENDENCY_DATASOURCE)}' />

@@ -46,8 +46,8 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 			$i = 0;
 			while ($result_set = $adb->fetch_array($result)) {
 				$saleorderId = $result_set['salesorderid'];
-				$saleorderCurrencyId = $result_set['currency_id'];
-				$saleorderCurrencyname = $this->getCurrencyNameById($result_set['currency_id']);
+				// $saleorderCurrencyId = $result_set['currency_id'];
+				// $saleorderCurrencyname = $this->getCurrencyNameById($result_set['currency_id']);
 				$taxType = $result_set['taxtype'];
 
 				$saleorders[$i] = $result_set;
@@ -68,7 +68,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 					$productrel[$n]['unit_type'] = $rowData['usageunit'];
 					$productrel[$n]['selling_price'] = $rowData['listprice'];
 					$productrel[$n]['quantity'] = $rowData['quantity'];
-					$productrel[$n]['currency_type'] = $saleorderCurrencyname;
+					$productrel[$n]['currency_type'] = $result_set['currency_id'];
 					//if tax type is group in SO, tax of each product = 0
 					if ($taxType == "group") {
 						$productrel[$n]['item_tax'] = 0;
@@ -98,29 +98,26 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 		foreach ($settingSalesOrders as $key => $SalesOrder) {
 
 			$saleorderId = $SalesOrder['salesorderid'];
-			$potential_data = $SalesOrder['potentialid'];
-			$contact_data = $SalesOrder['contactid'];
-			$account_data = $SalesOrder['accountid'];
-			$currency_data = $SalesOrder['currency_id'];
-
-			if (isset($currency_data)) {
-				$currency_data = $this->getCurrencyNameById($currency_data);
-			}
+			$potential_data = $SalesOrder['potentialid'] ? $this->getPotentialById($SalesOrder['potentialid']) : "";
+			$contact_data = $SalesOrder['contactid'] ? $this->getContactById($SalesOrder['contactid']) : "";
+			$account_data = $SalesOrder['accountid'] ? $this->getAccountById($SalesOrder['accountid']) : "";
+			$enable_recurring  = $SalesOrder['enable_recurring'] == 1 ? "Yes" : "No";
+			//$currency_data = $SalesOrder['currency_id'];
 
 			//check the potential Id 
-			if (isset($potentialId)) {
-				$potential_data = $this->getPotentialById($potential_data);
-			}
+			// if (isset($potentialId)) {
+			// 	$potential_data = $this->getPotentialById($potential_data);
+			// }
 
 			//check the contact Id
-			if (isset($contact_data)) {
-				$contact_data = $this->getContactById($contact_data);
-			}
+			// if (isset($contact_data)) {
+			// 	$contact_data = $this->getContactById($contact_data);
+			// }
 
 			//check the account Id
-			if (isset($account_data)) {
-				$account_data = $this->getAccountById($account_data);
-			}
+			// if (isset($account_data)) {
+			// 	$account_data = $this->getAccountById($account_data);
+			// }
 
 			$save_saleorder = array(
 				'module' 					=> 'CSCSalesOrder',
@@ -141,7 +138,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 				'account_name'				=> $account_data,
 				'order_receipt_person'		=> null,
 				'order_issue_person'		=> null,
-				'enable_recurring'			=> $SalesOrder['enable_recurring'],
+				'enable_recurring'			=> $enable_recurring,
 				'recurring_frequency'		=> $SalesOrder['recurring_frequency'],
 				'start_period' 				=> $SalesOrder['start_period'],
 				'end_period'				=> $SalesOrder['end_period'],
@@ -160,7 +157,7 @@ class CSCSalesOrder_SelfTransfer_Action extends Vtiger_Action_Controller
 				'ship_postal_code'			=> $SalesOrder['ship_code'],
 				'ship_country'				=> $SalesOrder['ship_country'],
 				'description'				=> $SalesOrder['description'],
-				'currency_name'				=> $currency_data,
+				'currency_id'				=> $SalesOrder['currency_id'],
 				'taxtype'					=> $SalesOrder['taxtype'],
 				'item_total'				=> $SalesOrder['subtotal'],
 				'discount_percent'			=> $SalesOrder['discount_percent'],

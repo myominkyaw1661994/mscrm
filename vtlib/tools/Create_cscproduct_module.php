@@ -134,36 +134,6 @@ $field->label = "LBL_VENDOR_NAME";
 $blockInstance->addField($field);
 echo "\n";
 
-//create product category 1 field
-$field = new Vtiger_Field();
-$field->name = 'productcategory1';
-$field->table = $module->basetable;
-$field->column = $field->name;
-$field->columntype = 'varchar(200)';
-$field->uitype = 3;
-$field->typeofdata = 'V~O';
-$field->masseditable = 0;
-$field->quickcreate = 1;
-$field->summaryfield = 0;
-$field->label = 'LBL_PRODUCT_CATEGORY_ONE';
-$blockInstance->addField($field);
-echo "\n";
-
-//create product category 2 field
-$field = new Vtiger_Field();
-$field->name = 'productcategory2';
-$field->table = $module->basetable;
-$field->column = $field->name;
-$field->columntype = 'varchar(200)';
-$field->uitype = 3;
-$field->typeofdata = 'V~O';
-$field->masseditable = 0;
-$field->quickcreate = 1;
-$field->summaryfield = 0;
-$field->label = 'LBL_PRODUCT_CATEGORY_TWO';
-$blockInstance->addField($field);
-echo "\n";
-
 //create website field
 $field = new Vtiger_Field();
 $field->name = 'website';

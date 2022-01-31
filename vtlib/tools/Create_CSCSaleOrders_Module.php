@@ -16,7 +16,7 @@ global $adb, $log;
 $log->debug("[START] Create CSC CSC Sale Order Module");
 
 $module_name = 'CSCSalesOrder';
-$table_name = 'vtiger_cscsalesorders';
+$table_name = 'vtiger_cscsalesorder';
 $detail_table = "vtiger_cscsalesorderproductrel";
 
 //If module table exist, Delete table
@@ -85,7 +85,7 @@ $field->column = $field->name;
 $field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 1;
-$field->typeofdata = 'I~O';
+$field->typeofdata = 'V~O';
 $field->masseditable = 0;
 $field->quickcreate = 1;
 $field->summaryfield = 1;
@@ -100,7 +100,7 @@ $field->table = $module->basetable;
 $field->column = $field->name;
 $field->columntype = 'varchar(100)';
 $field->uitype = 3;
-$field->typeofdata = 'I~O';
+$field->typeofdata = 'V~O';
 $field->quickcreate = 1;
 $field->summaryfield = 0;
 $field->label = 'LBL_CONTACT_NAME';
@@ -565,14 +565,14 @@ echo "\n";
 
 // Currency 
 $field = new Vtiger_Field();
-$field->name = 'currency_name';
+$field->name = 'currency_id';
 $field->table = $module->basetable;
 $field->column = $field->name;
 $field->columntype = 'varchar(100)';
 $field->uitype = 3;
 $field->summaryfield = 0;
 $field->typeofdata = 'V~O';
-$field->label = "LBL_CURRENCY_NAME";
+$field->label = "LBL_CURRENCY_ID";
 $blockInstance->addField($field);
 echo "\n";
 
@@ -725,7 +725,7 @@ $field->column = $field->name;
 $field->columntype = 'int(19)';
 $field->uitype = 3;
 $field->summaryfield = 0;
-$field->typeofdata = 'I~O';
+$field->typeofdata = 'V~O';
 $field->label = "LBL_PRODUCT";
 $blockInstance->addField($field);
 $field->setRelatedModules(array('CSCProducts'));

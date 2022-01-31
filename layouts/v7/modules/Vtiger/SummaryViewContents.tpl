@@ -41,7 +41,11 @@
                           {*2021-08-27 Thet Phyo Wai Create CSC Product Module Start*}
                           {*{if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") )}*}
                           {* {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") ) and !($MODULE_NAME eq CSCProducts and ($FIELD_NAME neq "productcategory1" and $FIELD_NAME neq "productcategory2"))} *}
-                          {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") ) and !($MODULE_NAME eq CSCProducts and ($FIELD_NAME neq "productcategory1" and $FIELD_NAME neq "productcategory2")) and $MODULE_NAME neq 'CSCSalesOrder'}
+                          {if !($IS_EDIT) and !($MODULE_NAME eq HelpDesk and ($FIELD_NAME eq "parent_id" or $FIELD_NAME eq "contact_id" 
+                          or $FIELD_NAME eq "product_id" or $FIELD_NAME eq "ticketstatus" or $FIELD_NAME eq "machine_serial_no" 
+                          or $FIELD_NAME eq "invoice_pattern" or $FIELD_NAME eq "engineer_name" or $FIELD_NAME eq "customer_name") ) 
+                          and !($MODULE_NAME eq CSCProducts and ($FIELD_NAME neq "productcategory1" and $FIELD_NAME neq "productcategory2")) 
+                          and $MODULE_NAME neq 'CSCSalesOrder'}
                           {*2021-08-27 Thet Phyo Wai Create CSC Product Module End*}
 
                           {*2020/11/24 Thet Phyo Wai Add Field Ticket Ver 1.0 End*}

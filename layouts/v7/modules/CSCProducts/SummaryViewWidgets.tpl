@@ -72,7 +72,6 @@
         </div>
     {/if}
     {* Summary View Documents Widget Ends Here*}
-
 </div>
 
 <div class="middle-block col-lg-7">

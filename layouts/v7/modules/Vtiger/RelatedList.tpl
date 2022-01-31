@@ -109,7 +109,6 @@
 									{*{if $IS_EDITABLE && $RELATED_RECORD->isEditable()}*}
 									{if $IS_EDITABLE && $RELATED_RECORD->isEditable() && $RELATED_MODULE_NAME neq 'CSCProducts'}
 									{*2021-08-27 Thet Phyo Wai Create CSC Product Module End*}
-
 										{if $RELATED_MODULE_NAME eq 'PriceBooks' AND (!empty($RELATED_HEADERS['listprice']) || !empty($RELATED_HEADERS['unit_price']))}
 											{if !empty($RELATED_HEADERS['listprice'])}
 												{assign var="LISTPRICE" value=CurrencyField::convertToUserFormat($RELATED_RECORD->get('listprice'), null, true)}
@@ -136,7 +135,6 @@
 										{/if}
 										><i class="fa fa-pencil" title="{vtranslate('LBL_EDIT', $MODULE)}"></i></a> &nbsp;&nbsp;
 									{/if}
-
 									{*2021-08-27 Thet Phyo Wai Create CSC Product Module Start*}
 									{*{if $IS_DELETABLE}*}
 									{if $IS_DELETABLE and !($RELATED_MODULE_NAME eq 'CSCProducts' and $TAB_LABEL eq 'Parent Product')}

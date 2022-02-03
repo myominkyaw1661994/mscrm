@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-24 15:35:17
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-03 09:30:38
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\ListViewRecordActions.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:57939170761ea4ad82520c7-22250422%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5d6f94779e89ec246ac14c4fa2dd4772075e67e0' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\ListViewRecordActions.tpl',
-      1 => 1635737405,
+      1 => 1643857233,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 " href="javascript:void(0);" data-url="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getEditViewUrl();?>
 &app=<?php echo $_smarty_tpl->tpl_vars['SELECTED_MENU_CATEGORY']->value;?>
 " name="editlink"><?php echo vtranslate('LBL_EDIT',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-</a></li><?php }?><?php if ($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['delete']&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder'){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
+</a></li><?php }?><?php if (($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['delete']&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder')&&($_smarty_tpl->tpl_vars['RECORD_ACTIONS']->value['delete']&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCProducts')){?><li><a data-id="<?php echo $_smarty_tpl->tpl_vars['LISTVIEW_ENTRY']->value->getId();?>
 " href="javascript:void(0);" class="deleteRecordButton"><?php echo vtranslate('LBL_DELETE',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 </a></li><?php }?><?php }?></ul></span><div class="btn-group inline-save hide"><?php if ($_smarty_tpl->tpl_vars['MODULE']->value!='CSCProducts'&&$_smarty_tpl->tpl_vars['MODULE']->value!='CSCSalesOrder'){?><button class="button btn-success btn-small save" type="button" name="save"><i class="fa fa-check"></i></button><?php }?><button class="button btn-danger btn-small cancel" type="button" name="Cancel"><i class="fa fa-close"></i></button></div></div>
 <?php }} ?>

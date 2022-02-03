@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-21 12:25:34
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-03 09:26:53
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\ListViewContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:137521220361ea4ad6c71c38-63759663%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '43fc3f40e744f74f942c825abd72ce19d202bd56' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\ListViewContents.tpl',
-      1 => 1607063908,
+      1 => 1643856964,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_61ea4ad762d28',
   'variables' => 
   array (
     'MODULE' => 0,
@@ -74,8 +76,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SINGLE_MODULE' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_61ea4ad762d28',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_61ea4ad762d28')) {function content_61ea4ad762d28($_smarty_tpl) {?>
 
@@ -418,7 +418,17 @@ $_smarty_tpl->tpl_vars['MULTI_PICKLIST_VALUE']->_loop = true;
 <?php $_tmp6=ob_get_clean();?><?php $_smarty_tpl->tpl_vars['COLSPAN_WIDTH'] = new Smarty_variable($_tmp6+1, null, 0);?>
 						<td colspan="<?php echo $_smarty_tpl->tpl_vars['COLSPAN_WIDTH']->value;?>
 ">
-							<div class="emptyRecordsContent">
+							
+							<?php if ($_smarty_tpl->tpl_vars['MODULE']->value=='CSCProducts'||$_smarty_tpl->tpl_vars['MODULE']->value=='CSCSalesOrder'){?>
+								<?php echo "No";?>
+
+								<?php echo vtranslate($_smarty_tpl->tpl_vars['MODULE']->value,$_smarty_tpl->tpl_vars['MODULE']->value);?>
+
+								<?php echo "found.";?>
+
+							<?php }else{ ?>
+							
+								<div class="emptyRecordsContent">
 								<?php $_smarty_tpl->tpl_vars['SINGLE_MODULE'] = new Smarty_variable("SINGLE_".($_smarty_tpl->tpl_vars['MODULE']->value), null, 0);?>
 								<?php echo vtranslate('LBL_NO');?>
  <?php echo vtranslate($_smarty_tpl->tpl_vars['MODULE']->value,$_smarty_tpl->tpl_vars['MODULE']->value);?>
@@ -433,14 +443,15 @@ $_smarty_tpl->tpl_vars['MULTI_PICKLIST_VALUE']->_loop = true;
 
 										<a style="color:blue" href="#" onclick="return Vtiger_Import_Js.triggerImportAction()"><?php echo vtranslate('LBL_IMPORT',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 </a>
-										<?php echo vtranslate($_smarty_tpl->tpl_vars['MODULE']->value,$_smarty_tpl->tpl_vars['MODULE']->value);?>
-
+										
 									<?php }else{ ?>
 										<?php echo vtranslate($_smarty_tpl->tpl_vars['SINGLE_MODULE']->value,$_smarty_tpl->tpl_vars['MODULE']->value);?>
 
 									<?php }?>
 								<?php }?>
-							</div>
+								</div>
+							<?php }?>
+							
 						</td>
 					</tr>
 				<?php }?>

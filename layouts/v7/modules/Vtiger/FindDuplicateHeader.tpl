@@ -26,10 +26,16 @@
 		<div class="col-lg-1">
 			{if $LISTVIEW_ENTRIES_COUNT > 0}
 				{foreach item=LISTVIEW_BASICACTION from=$LISTVIEW_LINKS}
+					{* 02/02/2022 Myo Min KyawHide the delete button at Duplicate start *}
+					{if $MODULE eq 'CSCSalesOrder' or $MODULE eq 'CSCProducts'}
+						{continue}
+					{/if}
+					{* 02/02/2022 Myo Min KyawHide the delete button at Duplicate end *}
 					<button id="{$MODULE}_listView_basicAction_{Vtiger_Util_Helper::replaceSpaceWithUnderScores($LISTVIEW_BASICACTION->getLabel())}" class="btn btn-danger pull-left" 
 						{if stripos($LISTVIEW_BASICACTION->getUrl(), 'javascript:')===0} onclick='{$LISTVIEW_BASICACTION->getUrl()|substr:strlen("javascript:")};'{else} onclick='window.location.href="{$LISTVIEW_BASICACTION->getUrl()}"'{/if}>
 							<strong>{vtranslate($LISTVIEW_BASICACTION->getLabel(), $MODULE)}</strong>
 					</button>
+					
 				{/foreach}
 			{/if}
 		</div>

@@ -56,7 +56,7 @@
             {if $DETAILVIEW_LINKS['DETAILVIEW']|@count gt 0}
                 {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order Start*}
                 {* Disable More Button for disable Delete button in the Detail Page *}
-                {if $MODULE_NAME neq 'CSCSalesOrder'}
+                {if $MODULE_NAME neq 'CSCSalesOrder' and $MODULE neq 'CSCProducts'}
                 {*2021-10-12 Pyae Phyo Mon Remove Edit Button in CSC Sales Order End*}
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
                    {vtranslate('LBL_MORE', $MODULE_NAME)}&nbsp;&nbsp;<i class="caret"></i>

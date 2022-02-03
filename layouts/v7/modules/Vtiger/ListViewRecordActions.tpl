@@ -49,7 +49,7 @@
             {*2021-10-12 Pyae Phyo Mon Remove Delete button of CSC SalesOrder Module Start*}
             {*  Disable Delete in the record of Listing (:) *}
 				{* {if $RECORD_ACTIONS['delete']} *}
-                {if $RECORD_ACTIONS['delete'] and $MODULE neq 'CSCSalesOrder'}
+                {if ($RECORD_ACTIONS['delete'] and $MODULE neq 'CSCSalesOrder') and ($RECORD_ACTIONS['delete'] and $MODULE neq 'CSCProducts')}
             {*2021-10-12 Pyae Phyo Mon Remove Edit button of CSC SalesOrder Module End*}
 					<li><a data-id="{$LISTVIEW_ENTRY->getId()}" href="javascript:void(0);" class="deleteRecordButton">{vtranslate('LBL_DELETE', $MODULE)}</a></li>
 				{/if}

@@ -43,7 +43,7 @@
                 {*2021-10-12 Pyae Phyo Mon Remove Delete button of CSC Sales Order Module Start*}
                {*  {if $deleteAction} *}
                {* Enable Delete Button in the listing page *}
-               {if $deleteAction and $MODULE neq 'CSCSalesOrder'}
+               {if $deleteAction and $MODULE neq 'CSCSalesOrder' and $MODULE neq 'CSCProducts'}
                 {*2021-10-12 Pyae Phyo Mon Remove Delete button of CSC Sales Order Module End*}
                     <button type="button" class="btn btn-default" id={$MODULE}_listView_massAction_{$deleteAction->getLabel()} 
                             {if stripos($deleteAction->getUrl(), 'javascript:')===0} href="javascript:void(0);" onclick='{$deleteAction->getUrl()|substr:strlen("javascript:")}'{else} href='{$deleteAction->getUrl()}' {/if} title="{vtranslate('LBL_DELETE', $MODULE)}" disabled="disabled">
@@ -112,7 +112,7 @@
                             {if $FIND_DUPLICATES_EXISTS}
                             {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module Start*}
                             {* Disable Merge selected record in Listing *}
-                                {if $MODULE neq 'CSCSalesOrder'}
+                                {if $MODULE neq 'CSCSalesOrder' and $MODULE neq 'CSCProducts'}
                             {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module End*}
                                 <li class="hide"><a id="{$MODULE}_listView_advancedAction_MERGE_RECORD"  href="javascript:void(0);" onclick='Vtiger_List_Js.triggerMergeRecord()'>{vtranslate('LBL_MERGE_SELECTED_RECORDS', $MODULE)}</a></li>
                                 {*2021-10-12 Pyae Phyo Mon Remove Merge button of CSC Sales Order Module Start*}

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-31 14:48:30
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-02 11:14:53
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\FindDuplicateContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:79731324061f79b56b5b009-36643357%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '556df5f3cef3d2659bd666c882d5e0e2f20c7204' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\FindDuplicateContents.tpl',
-      1 => 1601907276,
+      1 => 1643777090,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_61f79b5746e97',
   'variables' => 
   array (
     'MODULE' => 0,
@@ -39,8 +41,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'groupCount' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_61f79b5746e97',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_61f79b5746e97')) {function content_61f79b5746e97($_smarty_tpl) {?>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-31 14:48:31
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-02 11:17:24
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\FindDuplicateHeader.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:52829024861f79b57483396-30716026%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6fcf2d2c57a91df22658cc6b5d19781791ca1c11' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\FindDuplicateHeader.tpl',
-      1 => 1601907276,
+      1 => 1643777241,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_61f79b57e0fd1',
   'variables' => 
   array (
     'MODULE' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'LISTVIEW_BASICACTION' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_61f79b57e0fd1',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_61f79b57e0fd1')) {function content_61f79b57e0fd1($_smarty_tpl) {?>
 
@@ -55,6 +55,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['LISTVIEW_BASICACTION']->key => $_smarty_tpl->tpl_vars['LISTVIEW_BASICACTION']->value){
 $_smarty_tpl->tpl_vars['LISTVIEW_BASICACTION']->_loop = true;
 ?>
+					<?php if ($_smarty_tpl->tpl_vars['MODULE']->value=='CSCSalesOrder'||$_smarty_tpl->tpl_vars['MODULE']->value=='CSCProducts'){?>
+						<?php continue 1?>
+					<?php }?>
 					<button id="<?php echo $_smarty_tpl->tpl_vars['MODULE']->value;?>
 _listView_basicAction_<?php echo Vtiger_Util_Helper::replaceSpaceWithUnderScores($_smarty_tpl->tpl_vars['LISTVIEW_BASICACTION']->value->getLabel());?>
 " class="btn btn-danger pull-left" 
@@ -64,6 +67,7 @@ _listView_basicAction_<?php echo Vtiger_Util_Helper::replaceSpaceWithUnderScores
 							<strong><?php echo vtranslate($_smarty_tpl->tpl_vars['LISTVIEW_BASICACTION']->value->getLabel(),$_smarty_tpl->tpl_vars['MODULE']->value);?>
 </strong>
 					</button>
+					
 				<?php } ?>
 			<?php }?>
 		</div>

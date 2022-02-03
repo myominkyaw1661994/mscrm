@@ -67,7 +67,7 @@ class CSCSalesOrder_WDSaleOrderTransfer_Action extends Vtiger_Action_Controller
 					'sale_commission'			=> null,
 					'excise_duty' 				=> null,
 					'sostatus'					=> $saleorder_obj->SALES_ORDER_STATUS,
-					'account_id'				=> $this->fetchOrgIdByWDCustomerId($saleorder_obj->CUSTOMER_ID),
+					'account_name'				=> $this->getAccountById($this->fetchOrgIdByWDCustomerId($saleorder_obj->CUSTOMER_ID)),
 					'order_receipt_person'		=> $saleorder_obj->ORDER_RECEIPT_PERSON,
 					'order_issue_person'		=> $saleorder_obj->ORDER_ISSUE_PERSON,
 					'enable_recurring'			=> null,
@@ -220,6 +220,7 @@ EOM;
 
 			//get data from wd sale order array
 			foreach ($saleorder as $k => $v) {
+
 				$save_saleorder[$k] = $v;
 			}
 
@@ -252,5 +253,18 @@ EOM;
 
 		$logmessage = '[' . $date->format('Y-m-d H:i:s') . ']' . mb_convert_encoding($message, "UTF-8", "auto") . "\r\n";
 		file_put_contents($saleorder_history_log_url, $logmessage, FILE_APPEND | LOCK_EX);
+	}
+
+	//Get Account Name by Id
+	function getAccountById($id)
+	{
+		global $adb;
+		$result = $adb->pquery("SELECT accountname FROM vtiger_account WHERE accountid = ?", array($id));
+		$account_name = $adb->query_result($result, 0, 'accountname');
+		if ($account_name == null) {
+			return "";
+		}
+
+		return $account_name;
 	}
 }

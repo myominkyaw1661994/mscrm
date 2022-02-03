@@ -186,7 +186,7 @@ $product_info_log_url = 'E:\crm\bin\ProductInfoTransfer.log';
 /*2021-10-18 Thet Phyo Wai Product Info data Transfer End*/
 
 /*2021-10-18 Thet Phyo Wai Product Info data Transfer From WD Start*/
-$wd_product_url = 'http://localhost:4000/product';
+$wd_product_url = 'http://localhost:52143/api/DataTransfer?Module=Product';
 /*2021-10-18 Thet Phyo Wai Product Info data Transfer From WD End*/
 
 /*2021-10-22 Thet Phyo Wai Sale Order Info data Transfer Start*/
@@ -195,7 +195,7 @@ $saleorder_history_log_url = 'C:\crm\bin\SalesOrderHistoryTransfer.log';
 /*2021-10-22 Thet Phyo Wai Sale Order Info data Transfer Start*/
 
 /*2021-10-18 Thet Phyo Wai Product Info data Transfer From WD Start*/
-$wd_saleorder_url = 'http://192.168.123.35/WebAPI_DEMO/api/DataTransfer?Module=SalesOrder';
+$wd_saleorder_url = 'http://localhost:52143/api/DataTransfer?Module=SalesOrder';
 /*2021-10-18 Thet Phyo Wai Product Info data Transfer From WD End*/
 
 include_once 'config.security.php';

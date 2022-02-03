@@ -246,7 +246,14 @@
 					<tr class="emptyRecordsDiv">
 						{assign var=COLSPAN_WIDTH value={count($LISTVIEW_HEADERS)}+1}
 						<td colspan="{$COLSPAN_WIDTH}">
-							<div class="emptyRecordsContent">
+							{* 2022/02/03 Myo Min Kyaw Add No Product or Sale Order History found start *}
+							{if $MODULE eq 'CSCProducts' or $MODULE eq 'CSCSalesOrder'}
+								{"No"}
+								{vtranslate($MODULE, $MODULE)}
+								{"found."}
+							{else}
+							{* 2022/02/03 Myo Min Kyaw Add No Product or Sale Order History found end *}
+								<div class="emptyRecordsContent">
 								{assign var=SINGLE_MODULE value="SINGLE_$MODULE"}
 								{vtranslate('LBL_NO')} {vtranslate($MODULE, $MODULE)} {vtranslate('LBL_FOUND')}.
 								{if $IS_CREATE_PERMITTED}
@@ -254,12 +261,14 @@
 									{if Users_Privileges_Model::isPermitted($MODULE, 'Import') && $LIST_VIEW_MODEL->isImportEnabled()}
 										{vtranslate('LBL_OR', $MODULE)}
 										<a style="color:blue" href="#" onclick="return Vtiger_Import_Js.triggerImportAction()">{vtranslate('LBL_IMPORT', $MODULE)}</a>
-										{vtranslate($MODULE, $MODULE)}
+										
 									{else}
 										{vtranslate($SINGLE_MODULE, $MODULE)}
 									{/if}
 								{/if}
-							</div>
+								</div>
+							{/if}
+							
 						</td>
 					</tr>
 				{/if}

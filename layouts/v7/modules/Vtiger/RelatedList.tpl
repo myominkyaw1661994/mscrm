@@ -136,8 +136,7 @@
 										><i class="fa fa-pencil" title="{vtranslate('LBL_EDIT', $MODULE)}"></i></a> &nbsp;&nbsp;
 									{/if}
 									{*2021-08-27 Thet Phyo Wai Create CSC Product Module Start*}
-									{*{if $IS_DELETABLE}*}
-									{if $IS_DELETABLE and !($RELATED_MODULE_NAME eq 'CSCProducts' and $TAB_LABEL eq 'Parent Product')}
+									{if $IS_DELETABLE && !(($RELATED_MODULE_NAME eq 'CSCProducts' and $TAB_LABEL eq 'Parent Product') || ($RELATED_MODULE_NAME eq 'CSCProducts' and $TAB_LABEL eq 'Product Parts'))}
 									{*2021-08-27 Thet Phyo Wai Create CSC Product Module End*}
 										<a class="relationDelete"><i title="{vtranslate('LBL_UNLINK', $MODULE)}" class="vicon-linkopen"></i></a>
 									{/if}

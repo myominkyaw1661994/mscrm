@@ -26,7 +26,7 @@
 		<div class="col-lg-1">
 			{if $LISTVIEW_ENTRIES_COUNT > 0}
 				{foreach item=LISTVIEW_BASICACTION from=$LISTVIEW_LINKS}
-					{* 02/02/2022 Myo Min KyawHide the delete button at Duplicate start *}
+					{* 02/02/2022 Myo Min Kyaw Hide the delete button at Duplicate start *}
 					{if $MODULE eq 'CSCSalesOrder' or $MODULE eq 'CSCProducts'}
 						{continue}
 					{/if}

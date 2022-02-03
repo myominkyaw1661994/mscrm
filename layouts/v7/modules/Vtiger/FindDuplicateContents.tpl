@@ -31,6 +31,13 @@
 			{assign var=IS_EDITABLE value=$CURRENT_USER_PRIVILAGES_MODEL->hasModuleActionPermission($MODULE_MODEL->getId(), 'EditView')}
 			{assign var=IS_DELETABLE value=$CURRENT_USER_PRIVILAGES_MODEL->hasModuleActionPermission($MODULE_MODEL->getId(), 'Delete')}
 
+			{*2021-12-01 Thet Phyo Wai Remove Duplicate Delete and Merge Action in CSC Product and SO Start*}
+			{if $MODULE_MODEL->getName() eq 'CSCProducts' or $MODULE_MODEL->getName() eq 'CSCSalesOrder'}
+			{$IS_EDITABLE=false}
+			{$IS_DELETABLE=false}
+			{/if}
+			{*2021-12-01 Thet Phyo Wai Remove Duplicate Delete and Merge Action in CSC Product and SO End*}
+
 			<table id="listview-table" class="listview-table table table-bordered" style="border-top:1px solid #ddd;">
 				<thead>
 					<tr class="listViewContentHeader">

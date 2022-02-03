@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-01-31 09:53:51
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-03 16:21:38
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\RelatedList.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:209084461061ee7514988ba9-65778230%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '19ef17b39e052f8b1fac84dba7fd8aae1e7bbaaa' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\RelatedList.tpl',
-      1 => 1643513339,
+      1 => 1643881886,
       2 => 'file',
     ),
   ),
@@ -113,7 +113,7 @@ $_smarty_tpl->tpl_vars['RELATED_RECORD']->_loop = true;
 &currentQty=<?php echo $_smarty_tpl->tpl_vars['quantity']->value;?>
 ');if(event.stopPropagation){event.stopPropagation();}else{event.cancelBubble=true;}"<?php }else{ ?><a name="relationEdit" data-url="<?php echo $_smarty_tpl->tpl_vars['RELATED_RECORD']->value->getEditViewUrl();?>
 "<?php }?>><i class="fa fa-pencil" title="<?php echo vtranslate('LBL_EDIT',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-"></i></a> &nbsp;&nbsp;<?php }?><?php if ($_smarty_tpl->tpl_vars['IS_DELETABLE']->value&&!($_smarty_tpl->tpl_vars['RELATED_MODULE_NAME']->value=='CSCProducts'&&$_smarty_tpl->tpl_vars['TAB_LABEL']->value=='Parent Product')){?><a class="relationDelete"><i title="<?php echo vtranslate('LBL_UNLINK',$_smarty_tpl->tpl_vars['MODULE']->value);?>
+"></i></a> &nbsp;&nbsp;<?php }?><?php if ($_smarty_tpl->tpl_vars['IS_DELETABLE']->value&&!(($_smarty_tpl->tpl_vars['RELATED_MODULE_NAME']->value=='CSCProducts'&&$_smarty_tpl->tpl_vars['TAB_LABEL']->value=='Parent Product')||($_smarty_tpl->tpl_vars['RELATED_MODULE_NAME']->value=='CSCProducts'&&$_smarty_tpl->tpl_vars['TAB_LABEL']->value=='Product Parts'))){?><a class="relationDelete"><i title="<?php echo vtranslate('LBL_UNLINK',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 " class="vicon-linkopen"></i></a><?php }?></span></td><?php  $_smarty_tpl->tpl_vars['HEADER_FIELD'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['HEADER_FIELD']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['RELATED_HEADERS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['HEADER_FIELD']->key => $_smarty_tpl->tpl_vars['HEADER_FIELD']->value){

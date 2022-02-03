@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2022-02-02 11:14:53
+<?php /* Smarty version Smarty-3.1.7, created on 2022-02-03 14:55:35
          compiled from "E:\xampp\htdocs\CSC0tester\includes\runtime/../../layouts/v7\modules\Vtiger\FindDuplicateContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:79731324061f79b56b5b009-36643357%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '556df5f3cef3d2659bd666c882d5e0e2f20c7204' => 
     array (
       0 => 'E:\\xampp\\htdocs\\CSC0tester\\includes\\runtime/../../layouts/v7\\modules\\Vtiger\\FindDuplicateContents.tpl',
-      1 => 1643777090,
+      1 => 1643876731,
       2 => 'file',
     ),
   ),
@@ -80,6 +80,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<input type="hidden" id="mergeSelectedIds" />
 			<?php $_smarty_tpl->tpl_vars['IS_EDITABLE'] = new Smarty_variable($_smarty_tpl->tpl_vars['CURRENT_USER_PRIVILAGES_MODEL']->value->hasModuleActionPermission($_smarty_tpl->tpl_vars['MODULE_MODEL']->value->getId(),'EditView'), null, 0);?>
 			<?php $_smarty_tpl->tpl_vars['IS_DELETABLE'] = new Smarty_variable($_smarty_tpl->tpl_vars['CURRENT_USER_PRIVILAGES_MODEL']->value->hasModuleActionPermission($_smarty_tpl->tpl_vars['MODULE_MODEL']->value->getId(),'Delete'), null, 0);?>
+
+			
+			<?php if ($_smarty_tpl->tpl_vars['MODULE_MODEL']->value->getName()=='CSCProducts'||$_smarty_tpl->tpl_vars['MODULE_MODEL']->value->getName()=='CSCSalesOrder'){?>
+			<?php $_smarty_tpl->tpl_vars['IS_EDITABLE'] = new Smarty_variable(false, null, 0);?>
+			<?php $_smarty_tpl->tpl_vars['IS_DELETABLE'] = new Smarty_variable(false, null, 0);?>
+			<?php }?>
+			
 
 			<table id="listview-table" class="listview-table table table-bordered" style="border-top:1px solid #ddd;">
 				<thead>
